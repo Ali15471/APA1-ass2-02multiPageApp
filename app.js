@@ -55,6 +55,22 @@ app.post('/add-book', (req, res) => {
   res.redirect('/');
 });
 
+app.get('/add-author', (req, res) => {
+  res.render('add-author');
+});
+
+app.post('/add-author', (req, res) => {
+  const newAuthor = {
+    id: authors.length + 1,
+    name: req.body.author,
+    birthYear: parseInt(req.body.birthYear),
+    nationality: req.body.nationality
+  };
+  authors.push(newAuthor);
+  res.redirect('/');
+});
+
+
 // Route for authors page (table view)
 app.get('/authors', (req, res) => {
   res.render('authors', { authors: authors });

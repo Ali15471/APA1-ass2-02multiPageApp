@@ -1,0 +1,34 @@
+//- This line extends the main layout (layout.pug)
+//- It means this template will inherit the structure defined in layout.pug
+//- The content defined here will be inserted into the 'block content' of the layout
+extends layout
+
+block content
+  h2 Add a New Author
+  //- Demonstrating a form with various input types
+  form(action="/add-author" method="POST")
+    //- Text input
+    .form-group
+      label(for="author") Author:
+      input(type="text" id="author" name="author" required)
+    
+    //- Number input
+    .form-group
+      label(for="birthYear") Birth Year:
+      input(type="number" id="birthYear" name="birthYear" required min="1000" max="2023")
+    
+    //- Select dropdown
+    .form-group
+      label(for="nationality") Nationality:
+      select(id="nationality" name="nationality" required)
+        option(value="") Select a Nationality
+        option(value="British") British
+        option(value="American") American
+        option(value="Indian") Indian
+        option(value="Chinese") Chinese
+        option(value="Danish") Danish
+        option(value="Dutch") Dutch
+    
+    //- Submit button
+    button(type="submit") Add Author
+
