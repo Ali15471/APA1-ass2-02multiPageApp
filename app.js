@@ -1,5 +1,5 @@
-const express = require('express');
-const app = express();
+const express = require('express'); //Imports express
+const app = express(); //Initialises Express
 const port = 3000;
 
 // Set up Pug as the view engine
@@ -75,6 +75,21 @@ app.post('/add-author', (req, res) => {
 app.get('/authors', (req, res) => {
   res.render('authors', { authors: authors });
 });
+
+// Route to handle the form submission and remove a book
+app.post('/remove-book/:id', (req, res) => {  
+  const bookId = parseInt(req.params.id, 10); // Ensure the ID is parsed as an integer  
+  const bookIndex = books.findIndex(b => b.id === bookId); // Find the index of the book  
+  
+  if (bookIndex === -1) {  
+    return res.status(404).render('404'); // Render a 404 page if the book is not found  
+  }  
+  
+  books.splice(bookIndex, 1); // Remove the book at the found index  
+  res.redirect('/'); // Redirect to the home page  
+});  
+
+
 
 // Start the server
 app.listen(port, () => {

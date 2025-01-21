@@ -17,6 +17,9 @@ block content
     p 
       strong Genre: 
       | #{book.genre}
+  
+      form(action=`/remove-book/${book.id}`, method="POST")  
+      button.remove(type="submit") Remove book  
   //- Anchor tag (a) for navigation back to the book list
   a(href="/") Back to Book List
 

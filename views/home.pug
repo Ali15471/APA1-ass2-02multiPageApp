@@ -18,3 +18,6 @@ block content
         p Year: #{book.year}
         p Genre: #{book.genre}
 
+        form(action=`/remove-book/${book.id}`, method="POST")  
+        button.remove(type="submit") Remove book  
+
